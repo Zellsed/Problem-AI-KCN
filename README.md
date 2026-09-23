@@ -2,40 +2,6 @@
 
 Local RAG system for industrial document retrieval using BM25, semantic search, and Reciprocal Rank Fusion (RRF).
 
-## Overview
-
-This project is a local Retrieval-Augmented Generation (RAG) retrieval system for experimenting with hybrid search.
-
-The retrieval pipeline combines:
-
-- BM25 keyword search
-- Local embedding search
-- Cosine similarity
-- Reciprocal Rank Fusion (RRF)
-- Local GGUF embedding model
-- `llama-cpp-python`
-
-The current project focuses on the retrieval stage of RAG.
-
-```text
-                         Query
-                           │
-             ┌─────────────┴─────────────┐
-             │                           │
-             ▼                           ▼
-        BM25 Search               Embedding Search
-             │                           │
-             ▼                           ▼
-       Ranked Results              Ranked Results
-             │                           │
-             └─────────────┬─────────────┘
-                           ▼
-                          RRF
-                           │
-                           ▼
-                    Final Ranked Results
-```
-
 ## Installation
 
 ### 1. Clone the repository
@@ -53,51 +19,7 @@ Using `uv`:
 uv venv
 ```
 
-### 3. Activate virtual environment
-
-#### Windows PowerShell
-
-```powershell
-.venv\Scripts\activate
-```
-
-#### Windows Git Bash
-
-```bash
-source .venv/Scripts/activate
-```
-
-#### Linux / macOS
-
-```bash
-source .venv/bin/activate
-```
-
-### 4. Install dependencies
-
-```bash
-uv pip install -r requirements.txt
-```
-
-Or using pip:
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Download Embedding Model
-
-This project uses the following local embedding model:
-
-```text
-jina-embeddings-v5-text-nano-retrieval
-```
-
-GGUF model:
-
-```text
-v5-nano-retrieval-Q4_K_M.gguf
-```
 
 The model is **not included in this repository** because its file size exceeds GitHub's 100 MB file size limit.
 
@@ -114,43 +36,15 @@ mkdir models
 Place the downloaded model inside:
 
 ```text
-models/
+models
+```
+
+```text
+embedding/
 └── v5-nano-retrieval-Q4_K_M.gguf
 ```
 
-The application expects the model at:
-
 ```text
-models/v5-nano-retrieval-Q4_K_M.gguf
-```
-
-## Project Structure
-
-```text
-Problem-AI-KCN/
-│
-├── models/
-│   └── v5-nano-retrieval-Q4_K_M.gguf
-│
-├── data/
-│   └── embeddings.json
-│
-├── main.py
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
-
-The GGUF model is intentionally excluded from Git:
-
-```gitignore
-models/*.gguf
-```
-
-## Run the Project
-
-After installing the dependencies and downloading the embedding model:
-
-```bash
-python main.py
+llm/
+└── Qwen3-4B-Q4_K_M.gguf
 ```

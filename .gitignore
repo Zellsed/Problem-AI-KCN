@@ -8,5 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
-models/*.gguf
-industrial_rag_dataset/
+models
+industrial_rag_dataset
+data
