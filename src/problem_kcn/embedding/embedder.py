@@ -4,7 +4,7 @@ import json
 import math               
 
 model_embedding = Llama(model_path="models/embedding/v5-nano-retrieval-Q4_K_M.gguf", embedding=True, verbose=False)
-model_llm = Llama(model_path="models/llm/Qwen3-4B-Q4_K_M.gguf",n_ctx=4096 , verbose=False)
+model_llm = Llama(model_path="models/llm/qwen3-4b-q4_k_m.gguf",n_ctx=4096 , verbose=False)
 
 def cosine_similarity(v1, v2):
     return sum(v1[i] * v2[i] for i in range(len(v1))) / (sum(v1[i] ** 2 for i in range(len(v1))) ** 0.5 * sum(v2[i] ** 2 for i in range(len(v2))) ** 0.5)
